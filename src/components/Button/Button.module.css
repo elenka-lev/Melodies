@@ -1,0 +1,38 @@
+.btn {
+  width: 160px;
+  height: 36px;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.btn.sign {
+  border: none;
+  background-color: #EE10B0;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn.sign:hover,
+.btn.sign:focus {
+  background-color: transparent;
+  border: 1px solid #EE10B0;
+  color: #EE10B0;
+}
+
+.btn.login {
+  background-color: transparent;
+  border: 1px solid #EE10B0;
+  color: #EE10B0;
+  transition: all 0.3s ease;
+}
+
+.btn.login:hover,
+.btn.login:focus {
+  color: #fff;
+  border: none;
+  background-color: #EE10B0;
+  padding: 0;
+}

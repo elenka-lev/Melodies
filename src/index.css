@@ -19,4 +19,69 @@
   margin: 0;
   padding: 0;
 }
+.btn {
+  width: 160px;
+  height: 36px;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.btn.sign {
+  border: none;
+  background-color: #EE10B0;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+.btn.sign:hover,
+.btn.sign:focus {
+  background-color: transparent;
+  border: 1px solid #EE10B0;
+  color: #EE10B0;
+}
+
+.btn.login {
+  background-color: transparent;
+  border: 1px solid #EE10B0;
+  color: #EE10B0;
+  margin-right: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn.login:hover,
+.btn.login:focus {
+  color: #fff;
+  border: none;
+  background-color: #EE10B0;
+}
+
+.btn.logout {
+  border: none;
+  background-color: transparent;
+  color: #EE10B0;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0;
+  width: auto;
+  height: auto;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    color:#EE10B0;
+    margin-right: 8px;
+  }
+}
+.btn.logout:hover,
+.btn.logout:focus {
+  color: #0E9EEF;
+  svg {
+    color:#0E9EEF;
+  }
+}
 
