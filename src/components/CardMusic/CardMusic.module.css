@@ -1,0 +1,35 @@
+.container {
+  border-radius: 10px;
+  padding: 4px 15px;
+  width: 174px;
+  height: 214px;
+  background: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.img {
+  border-radius: 10px;
+  width: 144px;
+  height: 150px;
+}
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.artist {
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+}

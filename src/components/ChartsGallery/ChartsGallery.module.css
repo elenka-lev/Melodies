@@ -1,0 +1,44 @@
+.container {
+  padding: 0 25px 64px;
+}
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 17px;
+  span {
+    color: #ee10b0;
+  }
+}
+.wrapper {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.cardItem {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.showMore {
+  border-radius: 31px;
+  padding: 18px 19px;
+  width: 62px;
+  height: 62px;
+  background-color: #1e1e1e;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.showMore:hover{
+  color: #0E9EEF;
+}
