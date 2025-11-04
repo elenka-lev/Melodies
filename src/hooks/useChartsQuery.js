@@ -7,3 +7,5 @@ export const useChartsQuery = () => {
     queryFn: getTopCharts,
   });
 }
+
+

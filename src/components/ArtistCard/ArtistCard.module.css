@@ -1,0 +1,14 @@
+.container {
+  width: 132px;
+  height: 178px;
+}
+.img {
+  border-radius: 200px;
+  width: 132px;
+  height: 130px;
+}
+.descr {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+}

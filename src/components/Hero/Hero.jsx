@@ -1,13 +1,13 @@
 import s from './Hero.module.css';
 import Button from '../Button/Button.jsx';
-import Search from '../Search/Search.jsx';
+// import Search from '../Search/Search.jsx';
 
 const Hero = () => {
   return (
     <section className={s.hero}>
       <div className={s.container}>
         <div className={s.searchWrap}>
-          <Search />
+          {/* <Search /> */}
           <div className={s.btnWrap}>
             <Button className={s.btn} variant="login">
               Login
