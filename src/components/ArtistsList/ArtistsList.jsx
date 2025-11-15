@@ -2,27 +2,31 @@ import React, { useState } from 'react';
 import ArtistCard from '../ArtistCard/ArtistCard.jsx';
 import s from './ArtistsList.module.css'
 import { Link } from 'react-router-dom';
-const ArtistsList = ({artists}) => {
-  const [visibleCount, setVisibleCount] = useState(5);
-  
-  
-  const handleShowMore = () => {
-    setVisibleCount(prev => prev + 5);
-  }
 
-  const visibleArtists = artists.slice(0, visibleCount);
-  const hasMore = visibleCount < artists.length;
+
+const ArtistsList = ({ artists = [], type = 'artist' }) => {
+  const [visibleCount, setVisibleCount] = useState(5);
+
+  const safeArtists = Array.isArray(artists) ? artists : [];
+  const visibleItems = safeArtists.slice(0, visibleCount);
+  const hasMore = visibleCount < safeArtists.length;
+
+  const handleShowMore = () => setVisibleCount(prev => prev + 5);
+
 
   return (
     <section className={s.container}>
       <h2 className={s.title}>
-        Popular <span>Artists</span>
+        {type === 'album' ? 'Albums' : 'Popular Artists'}
       </h2>
       <ul className={s.wrapper}>
-        {visibleArtists.map(artist => (
-          <li key={artist.id} className={`${s.cardItem} ${s.cardItemVisible}`}>
-            <Link to={`/artists/${artist.id}`} className={s.link}></Link>
-            <ArtistCard item={artist} />
+        {visibleItems.map(item => (
+          <li key={item.id} className={`${s.cardItem} ${s.cardItemVisible}`}>
+            <Link
+              to={`/${type === 'album' ? 'albums' : 'artists'}/${item.id}`}
+              className={s.link}
+            ></Link>
+            <ArtistCard item={item} type={type} />
           </li>
         ))}
         {hasMore && (

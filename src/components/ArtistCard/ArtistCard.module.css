@@ -11,4 +11,15 @@
   font-weight: 400;
   font-size: 16px;
   text-align: center;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.release {
+  text-align: center;
 }

@@ -3,13 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import s from './Banner.module.css'
 
 
-const Banner = ({artists}) => {
+const Banner = ({ artists = [], isSearching = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const safeArtists = Array.isArray(artists) ? artists : [];
-  
+
+  if (!safeArtists.length) return null;
+
   useEffect(() => {
-    if (!safeArtists || safeArtists.length === 0) return;
+    if (isSearching) return;
+    if (!safeArtists.length) return;
     if (isPaused) return;
 
     const interval = setInterval(() => {
@@ -17,15 +20,24 @@ const Banner = ({artists}) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [safeArtists.length, isPaused]);
+  }, [safeArtists.length, isPaused, isSearching]);
 
   const currentArtist = safeArtists[currentIndex];
+if (!currentArtist) return null;
+
   const image =
-    currentArtist.picture_medium ||
-    currentArtist.picture_big ||
     currentArtist.picture_xl ||
+    currentArtist.picture_big ||
+    currentArtist.picture_medium ||
     '../../../public/main-logo.svg';
-console.log(safeArtists);
+const name = isSearching
+  ? currentArtist.title ||
+    currentArtist.name ||
+    currentArtist.artist?.name ||
+    'Unknown'
+    : currentArtist.name || 'Unknown';
+  
+  console.log(currentArtist.picture_xl);
   return (
     <div
       className={s.banner}
@@ -38,7 +50,7 @@ console.log(safeArtists);
         <motion.img
           key={currentArtist.id}
           src={image}
-          alt={currentArtist.name}
+          alt={name}
           className={s.image}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -54,11 +66,11 @@ console.log(safeArtists);
           transition={{ duration: 0.6, delay: 1 }}
           className={s.name}
         >
-          {currentArtist.name}
+          {name}
         </motion.h2>
       </div>
     </div>
   );
-}
+};
 
 export default Banner
