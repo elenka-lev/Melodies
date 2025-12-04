@@ -1,6 +1,7 @@
 .container {
   width: 132px;
   height: 178px;
+  cursor: pointer;
 }
 .img {
   border-radius: 200px;

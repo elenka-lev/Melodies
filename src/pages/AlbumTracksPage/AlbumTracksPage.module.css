@@ -1,0 +1,18 @@
+.albumTracksPage {
+  background-color: #0E0D0D;
+  padding: 37px 54px 83px 42px;
+}
+button {
+  border: none;
+  cursor: pointer;
+   background-color: transparent;
+  padding: 0;
+}
+.back {
+  color: #0E9EEF;
+  transition: all 0.2s ease;
+}
+
+.back:hover {
+  color: #EE10B0;
+}

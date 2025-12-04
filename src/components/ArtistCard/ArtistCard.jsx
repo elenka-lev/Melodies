@@ -1,20 +1,18 @@
 import s from './ArtistCard.module.css'
 
-const ArtistCard = ({ item, type = 'artist' }) => {
+const ArtistCard = ({ item, type = 'artist', onClick }) => {
   const name = type === 'artist' ? item.name : item.title;
   const cover =
     type === 'artist'
       ? item.picture_medium
       : item.cover_small || '../../../public/main-logo.svg';
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={() => onClick?.(item)}>
       <img className={s.img} src={cover} alt={name} />
       <p className={s.descr}>{name}</p>
 
       {type === 'album' && (
-        
-          <p className={s.release}>{item.release_date?.slice(0, 4)}</p>
-        
+        <p className={s.release}>{item.release_date?.slice(0, 4)}</p>
       )}
     </div>
   );

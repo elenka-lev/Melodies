@@ -1,0 +1,36 @@
+.cardWrapp {
+  display: flex;
+  background-color: #1E1E1E;
+  border-radius: 5px;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+.playWrapp {
+  display: flex;
+  gap: 15px;
+}
+.btn {
+  width: 50px;
+}
+.descr {
+  display: flex;
+  gap: 200px;
+  align-items: center;
+}
+.favor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item, .release, .duration {
+  font-weight: 400;
+  font-size: 16px;
+}
+.play {
+  color:  #EE10B0;
+}
+.play.pause {
+  color: #0E9EEF; 
+}

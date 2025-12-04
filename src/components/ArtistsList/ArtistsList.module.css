@@ -5,9 +5,7 @@
   font-weight: 700;
   font-size: 32px;
   margin-bottom: 17px;
-  span {
-    color: #ee10b0;
-  }
+  color: #ee10b0;
 }
 .wrapper {
   list-style-type: none;
@@ -41,4 +39,9 @@
 }
 .showMore:hover{
   color: #0E9EEF;
+}
+.link {
+  text-decoration: none;
+  color: #fff;
+  outline: none;
 }

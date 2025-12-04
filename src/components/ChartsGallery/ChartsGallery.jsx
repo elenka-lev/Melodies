@@ -3,6 +3,7 @@ import CardMusic from "../CardMusic/CardMusic.jsx";
 import s from './ChartsGallery.module.css'
 import clsx from 'clsx';
 import Modal from "../Modal/Modal.jsx";
+import TrackModalContent from "../TrackModalContent/TrackModalContent.jsx";
 
 const ChartsGallery = ({ tracks }) => {
   const [visibleCount, setVisibleCount] = useState(5);
@@ -43,14 +44,7 @@ const ChartsGallery = ({ tracks }) => {
       </ul>
       <Modal isOpen={!!selectedTrack} onClose={() => setSelectedTrack(null)}>
         {selectedTrack && (
-          <div>
-            <img
-              src={selectedTrack.album.cover_medium}
-              alt={selectedTrack.title}
-            />
-            <h3>{selectedTrack.title_short}</h3>
-            <p>{selectedTrack.artist.name}</p>
-          </div>
+          <TrackModalContent track={selectedTrack } />
         )}
       </Modal>
     </section>

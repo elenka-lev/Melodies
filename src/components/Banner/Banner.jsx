@@ -37,7 +37,6 @@ const name = isSearching
     'Unknown'
     : currentArtist.name || 'Unknown';
   
-  console.log(currentArtist.picture_xl);
   return (
     <div
       className={s.banner}
