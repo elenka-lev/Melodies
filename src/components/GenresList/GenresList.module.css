@@ -1,0 +1,20 @@
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+.showMore {
+  border-radius: 31px;
+  padding: 18px 19px;
+  width: 62px;
+  height: 62px;
+  background-color: #1e1e1e;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.showMore:hover{
+  color: #0E9EEF;
+}

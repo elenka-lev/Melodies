@@ -1,0 +1,129 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 16px 25px;
+  width: 476px;
+  height: 372px;
+  background-color: #53063e;
+  position: relative;
+}
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.emailField,
+.nameField,
+.passwordField {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.nameField,
+.passwordField {
+  input {
+    border: 2px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 8px 4px 8px 8px;
+    width: 207px;
+    height: 40px;
+    background-color: transparent;
+    position: relative;
+    padding-left: 36px;
+  }
+
+  input::placeholder {
+    font-weight: 400;
+    font-size: 10px;
+    text-align: justify;
+    color: #fff;
+  }
+}
+.emailField {
+  input {
+    width: 100%;
+    border: 2px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 8px 4px 8px 8px;
+    width: 426px;
+    height: 40px;
+    background-color: transparent;
+    padding-left: 36px;
+    position: relative;
+  }
+  input::placeholder {
+    font-weight: 400;
+    font-size: 10px;
+    text-align: justify;
+    color: #fff;
+  }
+}
+
+.nameIcon {
+  fill: #fff;
+  position: absolute;
+  top: 55px;
+  left: 33px;
+}
+.pswrdIcon {
+  fill: #fff;
+  position: absolute;
+  top: 55px;
+  right: 200px;
+}
+.emailIcon {
+  fill: #fff;
+  position: absolute;
+  top: 170px;
+  left: 33px;
+}
+.btn {
+  border-radius: 4px;
+  padding: 8px 36px;
+  width: 100%;
+  height: 44px;
+  background-color: #ee10b0;
+
+}
+.btn:hover {
+  background-color: transparent;
+  border: 1px solid #ee10b0;
+  color: #ee10b0;
+  
+}
+
+.googleBtn {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  width: 426px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  gap: 8px;
+}
+.googleBtn:hover {
+  background-color: #fff;
+  color: #000;
+}
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  margin: 8px 0;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  margin: 16px 0;
+}

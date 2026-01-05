@@ -1,0 +1,25 @@
+.discovery {
+  padding: 64px 64px 64px 44px;
+}
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 10px;
+
+  span {
+    color: #EE10B0;
+  }
+}
+
+.btnWrap  {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}

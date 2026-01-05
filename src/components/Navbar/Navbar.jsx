@@ -21,7 +21,7 @@ const buildLinkClass = ({ isActive }) => {
           </NavLink>
         </li>
         <li className={s.item}>
-          <NavLink to='/discover' className={buildLinkClass}>
+          <NavLink to='/discovery' className={buildLinkClass}>
             <svg className={s.svg} width="16" height="16">
               <use href="/public/icons/symbol-defs.svg#icon-discover" />
             </svg>

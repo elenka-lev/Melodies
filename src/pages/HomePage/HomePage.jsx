@@ -7,6 +7,7 @@ import { useChartsQuery } from '../../hooks/useChartsQuery.js';
 
 
 const HomePage = () => {
+  
   const { data: chartsData, isLoading: chartsLoading } = useChartsQuery();
   const { data: artistsData, isLoading: artistsLoading } = useTopArtistsQuery();
  
@@ -23,7 +24,7 @@ const HomePage = () => {
     <div>
       <Hero />
       <ChartsGallery tracks={tracks} />
-      <ArtistsList artists={artists } />
+      <ArtistsList artists={artists} />
     </div>
   )
 }

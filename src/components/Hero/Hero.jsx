@@ -1,8 +1,10 @@
 import s from './Hero.module.css';
 import Button from '../Button/Button.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 // import Search from '../Search/Search.jsx';
 
 const Hero = () => {
+  const { openModal } = useAuth();
   return (
     <section className={s.hero}>
       <div className={s.container}>
@@ -12,7 +14,11 @@ const Hero = () => {
             <Button className={s.btn} variant="login">
               Login
             </Button>
-            <Button className={s.btn} variant="sign">
+            <Button
+              className={s.btn}
+              onClick={() => openModal('signup')}
+              variant="sign"
+            >
               Sign Up
             </Button>
           </div>

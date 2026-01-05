@@ -2,6 +2,10 @@
   width: 132px;
   height: 178px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.container:hover {
+  transform: scale(1.05);
 }
 .img {
   border-radius: 200px;

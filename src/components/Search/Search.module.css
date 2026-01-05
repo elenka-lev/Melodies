@@ -1,6 +1,6 @@
 .form {
   border-radius: 10px;
-  padding: 6px 8px;
+  padding: 0 8px;
   width: 450px;
   height: 40px;
   position: relative;
@@ -26,7 +26,7 @@
   border:none;
   background-color: #1f1f1f;
   position: absolute;
-  top: 13px;
+  top: 7px;
   left: 15px;
   svg {
     color: #EE10B0;
