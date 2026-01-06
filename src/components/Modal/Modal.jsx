@@ -4,8 +4,7 @@ import s from './Modal.module.css';
 
 ReactModal.setAppElement('#root');
 
-const Modal = ({ isOpen, onClose, children }) => {
-  
+const Modal = ({ isOpen, onClose, children, variant = 'auth' }) => {
   useEffect(() => {
     const handleEsc = e => {
       if (e.key === 'Escape') onClose();
@@ -14,11 +13,13 @@ const Modal = ({ isOpen, onClose, children }) => {
     return () => document.removeEventListener('keydown', handleEsc);
   }, [onClose]);
 
+  const variantClass = variant === 'track' ? s.trackVariant : s.authVariant;
+
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onClose}
-      className={s.modal}
+      className={`${s.modal} ${variantClass}`}
       overlayClassName={s.overlay}
     >
       <button className={s.closeBtn} onClick={onClose}>

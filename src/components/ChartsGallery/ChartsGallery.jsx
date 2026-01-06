@@ -42,10 +42,12 @@ const ChartsGallery = ({ tracks }) => {
           </li>
         )}
       </ul>
-      <Modal isOpen={!!selectedTrack} onClose={() => setSelectedTrack(null)}>
-        {selectedTrack && (
-          <TrackModalContent track={selectedTrack } />
-        )}
+      <Modal
+        isOpen={!!selectedTrack}
+        onClose={() => setSelectedTrack(null)}
+        variant="track"
+      >
+        {selectedTrack && <TrackModalContent track={selectedTrack} />}
       </Modal>
     </section>
   );

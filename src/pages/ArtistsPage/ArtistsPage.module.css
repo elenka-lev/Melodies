@@ -1,3 +1,7 @@
 .artist {
   padding: 48px 50px 64px;
 }
+.headerWrap {
+      display: flex;
+    justify-content: space-between;
+}

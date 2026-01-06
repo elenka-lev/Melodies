@@ -8,6 +8,7 @@ import { getGenres } from '../../api/genresApi.js'
 import AlbumsGenresList from '../../components/AlbumsGenresList/AlbumsGenresList.jsx'
 import Loading from '../../components/Loading/Loading.jsx'
 import { getTopAlbums } from '../../api/chartsApi.js'
+import { useAuth } from '../../context/AuthContext.jsx'
 
 
 const DiscoveryPage = () => {
@@ -23,7 +24,7 @@ const DiscoveryPage = () => {
     queryKey: ['albums'],
     queryFn: getTopAlbums,
   });
-
+const { openModal } = useAuth();
   if (isLoading) return <Loading />;
   if (isAlbumsLoading) return <Loading />;
 
@@ -33,10 +34,18 @@ const DiscoveryPage = () => {
       <div className={s.headerWrap}>
         <Search />
         <div className={s.btnWrap}>
-          <Button className={s.btn} variant="login">
+          <Button
+            className={s.btn}
+            variant="login"
+            onClick={() => openModal('login')}
+          >
             Login
           </Button>
-          <Button className={s.btn} variant="sign">
+          <Button
+            className={s.btn}
+            variant="sign"
+            onClick={() => openModal('signup')}
+          >
             Sign Up
           </Button>
         </div>

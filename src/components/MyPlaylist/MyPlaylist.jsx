@@ -12,7 +12,7 @@ const MyPlaylist = () => {
     <div className={s.container}>
       <h5 className={s.title}>Playlist and favorite</h5>
         <ul className={s.list}>
-        <li className={s.item}><NavLink className={buildLinkClass}>
+        <li className={s.item}><NavLink to='/favorite' className={buildLinkClass}>
           <svg widths={16} height={16} className={s.svg}>
             <use href="/public/icons/symbol-defs.svg#icon-favorite" />
           </svg>Your favorites

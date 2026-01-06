@@ -23,6 +23,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+transition: transform 0.2s;
+}
+
+.favor:hover {
+  transform: scale(1.1);
+}
+
+
+.activeFavor {
+  filter: drop-shadow(0 0 5px rgba(255, 0, 150, 0.5));
 }
 .item, .release, .duration {
   font-weight: 400;

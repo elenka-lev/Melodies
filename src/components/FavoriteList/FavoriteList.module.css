@@ -1,0 +1,10 @@
+.favoriteList {
+  background: linear-gradient(
+    135deg, 
+    #001f3f 0%,    
+    #050a10 50%,  
+    #001f3f 100%   
+  );
+  padding: 20px;
+  border-radius: 15px;
+}

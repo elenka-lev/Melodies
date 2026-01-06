@@ -20,8 +20,8 @@ const Search = ({ value, onSearch }) => {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       <button type="submit" className={s.btn}>
-        <svg width={25} height={25}>
-          <use href="/public/icons/symbol-defs.svg#icon-search" />
+        <svg width={25} height={25} className={s.svg}>
+          <use href="../../../public/icons/symbol-defs.svg#icon-search" />
         </svg>
       </button>
       <input

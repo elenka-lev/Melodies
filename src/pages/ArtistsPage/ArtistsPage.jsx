@@ -10,8 +10,11 @@ import {
 import { useSearchQuery } from '../../hooks/useSearchQuery.js';
 import s from './ArtistsPage.module.css';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import Button from '../../components/Button/Button.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 const ArtistsPage = () => {
+   const { openModal } = useAuth();
   const [query, setQuery] = useState('');
   const [selectedArtist, setSelectedArtist] = useState(null);
 
@@ -33,7 +36,7 @@ const ArtistsPage = () => {
   const handleAlbumClick = album => {
     const realArtistId = selectedArtist?.id || paramArtistId;
     if (!realArtistId) {
-      // navigate(`/artists/${realArtistId}/albums/${album.id}`);
+      
       navigate(`/artists/${album.artist?.id || album.id}/albums/${album.id}`);
       return;
     }
@@ -56,26 +59,23 @@ const ArtistsPage = () => {
 
   useEffect(() => {
     if (query && selectedArtist) {
-      // пользователь явно хочет искать — убираем выбранного артиста
+     
       setSelectedArtist(null);
-      // если URL содержит artistId — уберём его (push на /artists)
+     
       if (paramArtistId) navigate("/artists", { replace: false });
     }
-    // if (query && searchData?.data?.length && !selectedArtist) {
-    //   const found = searchData.data[0];
-    //   navigate(`/artists/${found.id}`, { replace: false });
-    // }
+    
   }, [query]);
 
    useEffect(() => {
      if (location.pathname === '/artists') {
-       // только если уже не в начальном состоянии
+      
        if (selectedArtist || query) {
          setSelectedArtist(null);
          setQuery('');
        }
      }
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+     
    }, [location.pathname]);
 
   const isSearching = !!query;
@@ -113,7 +113,26 @@ const ArtistsPage = () => {
 
   return (
     <section className={s.artist}>
-      <Search value={query} onSearch={setQuery} />
+      <div className={s.headerWrap}>
+        <Search value={query} onSearch={setQuery} />
+        <div className={s.btnWrap}>
+          <Button
+            className={s.btn}
+            variant="login"
+            onClick={() => openModal('login')}
+          >
+            Login
+          </Button>
+          <Button
+            className={s.btn}
+            onClick={() => openModal('signup')}
+            variant="sign"
+          >
+            Sign Up
+          </Button>
+        </div>
+      </div>
+
       <Banner artists={bannerArtists} isSearching={isSearching} />
       <ArtistsList
         artists={artists}

@@ -1,0 +1,28 @@
+.favorite {
+  padding: 64px 64px 64px 44px;
+}
+.headerWrap {
+  display: flex;
+  justify-content: start;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 30px;
+  
+}
+.title {
+  font-size: 100px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Just Another Hand', cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.emptyMsg {
+  font-size: 24px;
+  text-align: center;
+  color: #EE10B0;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}

@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import s from './AlbumTracksCard.module.css'
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { getFavorites, toggleFavoriteApi } from '../../api/authApi.js';
 
 const formatDuration = seconds => {
   if (!seconds && seconds !== 0) return '';
@@ -17,8 +20,42 @@ const AlbumTracksCard = ({
   setIsPlaying,
   onTrackEnd,
 }) => {
+
+  const { isLoggedIn, openModal } = useAuth();
+  const queryClient = useQueryClient();
+
+  const { data: favoritesData } = useQuery({
+    queryKey: ['favorites'],
+    queryFn: getFavorites, 
+    enabled: isLoggedIn, 
+  });
+  const favorites = Array.isArray(favoritesData) ? favoritesData : [];
+  
+  
+  const isFavorite = favorites.some(
+  fav => String(fav.trackId) === String(track.id)
+  );
+
+  const mutation = useMutation({
+    mutationFn: trackData => toggleFavoriteApi(trackData),
+    onSuccess: newFavorites => {
+      queryClient.setQueryData(['favorites'], newFavorites);
+    },
+  });
+
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    if (!isLoggedIn) {
+      openModal('login');
+      return;
+    }
+    mutation.mutate(track);
+  };
+
   const audioRef = useRef(null);
-  const isCurrent = currentTrack?.id === track.id;
+  const isCurrent = String(currentTrack?.id) === String(track.id);
+  // const isCurrent = currentTrack?.id === track.id;
   useEffect(() => {
     if (audioRef.current) {
       if (isCurrent && isPlaying) {
@@ -56,9 +93,7 @@ const AlbumTracksCard = ({
           >
             <use
               href={
-                isCurrent && isPlaying
-                  ? '../../../public/icons/pause.svg'
-                  : '../../../public/icons/play.svg'
+                isCurrent && isPlaying ? '/icons/pause.svg' : '/icons/play.svg'
               }
             />
           </svg>
@@ -73,9 +108,17 @@ const AlbumTracksCard = ({
           {(album?.release_date || track?.release_date || '').slice(0, 4)}
         </p>
         <p className={s.duration}>{formatDuration(track.duration)}</p>
-        <button className={s.favor}>
+        <button
+          className={`${s.favor} ${isFavorite ? s.activeFavor : ''}`}
+          onClick={handleFavoriteClick}
+          disabled={mutation.isPending}
+        >
           <svg width={30} height={30}>
-            <use href="../../../public/icons/favorite.svg" />
+            <use
+              href={
+                isFavorite ? '/icons/light-favor.svg' : '/icons/favorite.svg'
+              }
+            />
           </svg>
         </button>
       </div>

@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: 12px;
   padding: 16px 25px;
-  width: 476px;
+  min-width: 476px;
   height: 372px;
   background-color: #53063e;
   position: relative;
@@ -126,4 +126,10 @@ label {
   height: 1px;
   background-color: #fff;
   margin: 16px 0;
+}
+.error {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
 }

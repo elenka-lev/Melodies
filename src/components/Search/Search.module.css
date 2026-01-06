@@ -28,11 +28,12 @@
   position: absolute;
   top: 7px;
   left: 15px;
-  svg {
+  
+}
+.svg {
     color: #EE10B0;
     transition: all 0.2s ease;
   }
-}
 .input:hover,
 .input:focus {
   border: 1px solid #0E9EEF;
