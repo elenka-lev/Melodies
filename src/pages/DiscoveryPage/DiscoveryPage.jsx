@@ -12,6 +12,7 @@ import { useAuth } from '../../context/AuthContext.jsx'
 
 
 const DiscoveryPage = () => {
+  const { openModal, isLoggedIn } = useAuth();
   const {
     data: genres,
     isLoading,
@@ -24,7 +25,7 @@ const DiscoveryPage = () => {
     queryKey: ['albums'],
     queryFn: getTopAlbums,
   });
-const { openModal } = useAuth();
+
   if (isLoading) return <Loading />;
   if (isAlbumsLoading) return <Loading />;
 
@@ -33,22 +34,24 @@ const { openModal } = useAuth();
     <section className={s.discovery}>
       <div className={s.headerWrap}>
         <Search />
-        <div className={s.btnWrap}>
-          <Button
-            className={s.btn}
-            variant="login"
-            onClick={() => openModal('login')}
-          >
-            Login
-          </Button>
-          <Button
-            className={s.btn}
-            variant="sign"
-            onClick={() => openModal('signup')}
-          >
-            Sign Up
-          </Button>
-        </div>
+        {!isLoggedIn && (
+          <div className={s.btnWrap}>
+            <Button
+              className={s.btn}
+              variant="login"
+              onClick={() => openModal('login')}
+            >
+              Login
+            </Button>
+            <Button
+              className={s.btn}
+              variant="sign"
+              onClick={() => openModal('signup')}
+            >
+              Sign Up
+            </Button>
+          </div>
+        )}
       </div>
       <h2 className={s.title}>
         Music <span>Genres</span>

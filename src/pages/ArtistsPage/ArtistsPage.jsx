@@ -14,7 +14,7 @@ import Button from '../../components/Button/Button.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 
 const ArtistsPage = () => {
-   const { openModal } = useAuth();
+   const { openModal, isLoggedIn } = useAuth();
   const [query, setQuery] = useState('');
   const [selectedArtist, setSelectedArtist] = useState(null);
 
@@ -115,22 +115,24 @@ const ArtistsPage = () => {
     <section className={s.artist}>
       <div className={s.headerWrap}>
         <Search value={query} onSearch={setQuery} />
-        <div className={s.btnWrap}>
-          <Button
-            className={s.btn}
-            variant="login"
-            onClick={() => openModal('login')}
-          >
-            Login
-          </Button>
-          <Button
-            className={s.btn}
-            onClick={() => openModal('signup')}
-            variant="sign"
-          >
-            Sign Up
-          </Button>
-        </div>
+        {!isLoggedIn && (
+          <div className={s.btnWrap}>
+            <Button
+              className={s.btn}
+              variant="login"
+              onClick={() => openModal('login')}
+            >
+              Login
+            </Button>
+            <Button
+              className={s.btn}
+              onClick={() => openModal('signup')}
+              variant="sign"
+            >
+              Sign Up
+            </Button>
+          </div>
+        )}
       </div>
 
       <Banner artists={bannerArtists} isSearching={isSearching} />

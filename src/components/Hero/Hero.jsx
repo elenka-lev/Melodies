@@ -3,13 +3,13 @@ import Button from '../Button/Button.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 import Search from '../Search/Search.jsx';
 
-const Hero = () => {
+const Hero = ({ onSearch }) => {
   const { openModal, isLoggedIn } = useAuth();
   return (
     <section className={s.hero}>
       <div className={s.container}>
         <div className={s.searchWrap}>
-          <Search />
+          <Search onSearch={onSearch} />
           {!isLoggedIn && (
             <div className={s.btnWrap}>
               <Button
@@ -26,7 +26,8 @@ const Hero = () => {
               >
                 Sign Up
               </Button>
-            </div>)}
+            </div>
+          )}
         </div>
         <div className={s.wrapper}>
           <h1 className={s.title}>

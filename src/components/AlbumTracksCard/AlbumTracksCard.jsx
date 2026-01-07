@@ -55,7 +55,7 @@ const AlbumTracksCard = ({
 
   const audioRef = useRef(null);
   const isCurrent = String(currentTrack?.id) === String(track.id);
-  // const isCurrent = currentTrack?.id === track.id;
+  
   useEffect(() => {
     if (audioRef.current) {
       if (isCurrent && isPlaying) {

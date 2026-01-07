@@ -1,0 +1,21 @@
+.wrap {
+  padding: 25px;
+}
+.container {
+  background: linear-gradient(
+    135deg, 
+    #001f3f 0%,    
+    #050a10 50%,  
+    #001f3f 100%   
+  );
+  border-radius: 16px;
+  padding: 24px;
+}
+.title {
+      font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 17px;
+    span{
+    color: #ee10b0;
+    }
+}
