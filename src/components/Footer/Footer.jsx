@@ -56,7 +56,7 @@ const Footer = () => {
           <ul className={s.socialLink}>
             <li>
               <a
-                href="https://github.com/yourlink"
+                href="https://github.com/elenka-lev"
                 target="_blank"
                 rel="noreferrer"
                 className={s.socialLink}
@@ -66,7 +66,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://linkedin.com/in/yourlink"
+                href="https://www.linkedin.com/in/olena-sorokina-lev/"
                 target="_blank"
                 rel="noreferrer"
                 className={s.socialLink}

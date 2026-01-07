@@ -9,10 +9,12 @@ import AlbumsGenresList from '../../components/AlbumsGenresList/AlbumsGenresList
 import Loading from '../../components/Loading/Loading.jsx'
 import { getTopAlbums } from '../../api/chartsApi.js'
 import { useAuth } from '../../context/AuthContext.jsx'
-
+import { useSearchQuery } from '../../hooks/useSearchQuery.js'
+import AlbumsTrackList from '../../components/AlbumsTrackList/AlbumsTrackList.jsx'
 
 const DiscoveryPage = () => {
   const { openModal, isLoggedIn } = useAuth();
+  const [selectedGenre, setSelectedGenre] = useState('');
   const {
     data: genres,
     isLoading,
@@ -25,9 +27,12 @@ const DiscoveryPage = () => {
     queryKey: ['albums'],
     queryFn: getTopAlbums,
   });
-
-  if (isLoading) return <Loading />;
-  if (isAlbumsLoading) return <Loading />;
+const { data: genreTracks, isLoading: isTracksLoading } = useSearchQuery(
+  selectedGenre,
+  'track'
+  );
+  if (isLoading || isAlbumsLoading ) return <Loading />;
+  
 
 
   return (
@@ -56,7 +61,19 @@ const DiscoveryPage = () => {
       <h2 className={s.title}>
         Music <span>Genres</span>
       </h2>
-      <GenresList genres={genres} />
+      <GenresList genres={genres} onGenreClick={setSelectedGenre} />
+      {selectedGenre && (
+        <div style={{ marginTop: '40px' }}>
+          <h2 className={s.title}>
+            Best in <span>{selectedGenre}</span>
+          </h2>
+          {isTracksLoading ? (
+            <Loading />
+          ) : (
+            <AlbumsTrackList tracks={genreTracks?.data} />
+          )}
+        </div>
+      )}
       <AlbumsGenresList albums={albums} />
     </section>
   );
