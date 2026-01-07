@@ -23,7 +23,7 @@ const navigate = useNavigate();
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-  // 1. Проверяем токен в URL (после Google)
+  
   const params = new URLSearchParams(window.location.search);
   const tokenFromUrl = params.get('token');
 

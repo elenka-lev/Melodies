@@ -1,9 +1,9 @@
 import { Field, Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './LoginForm.module.css';
 import * as Yup from 'yup';
 import { useMutation } from '@tanstack/react-query';
-import { loginUser } from '../../api/authApi.js';
+import { googleAuth, loginUser } from '../../api/authApi.js';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { BASE_URL } from '../../constants.js';
 
@@ -34,36 +34,85 @@ const LoginForm = () => {
     mutation.mutate(values);
   };
 
+
+  const handleGoogleResponse = async response => {
+      try {
+        const idToken = response.credential; 
+  
+        
+        const data = await googleAuth(idToken);
+  
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          setIsLoggedIn(true);
+          closeModal();
+          
+          alert(`Welcome, ${data.user.name}!`);
+        }
+      } catch (error) {
+        console.error('Бэкенд отклонил Google Token:', error);
+        alert(
+          'Ошибка на сервере: ' + (error.response?.data?.message || error.message)
+        );
+      }
+    };
+  
+    
+    useEffect(() => {
+      
+      if (window.google) {
+        google.accounts.id.initialize({
+          client_id:
+            '697861147220-12t49h5h52too9lkseau285laslnbdcn.apps.googleusercontent.com', 
+          callback: handleGoogleResponse,
+        });
+  
+        google.accounts.id.renderButton(document.getElementById('googleBtn'), {
+          theme: 'outline',
+          size: 'large',
+          width: '400px',
+          text: 'signup_with',
+          shape: 'pill',
+        });
+      }
+    }, []);
+  
+  
   const initialValues = {
     password: '',
     email: '',
   };
   return (
-    <Formik initialValues={initialValues} validationSchema={loginSchema} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={loginSchema}
+      onSubmit={handleSubmit}
+    >
       <Form className={s.loginForm}>
-        <label htmlFor="email">E-mail</label>
-        <Field name="email" type="email" placeholder="Enter Your E-Mail" />
+        <div className={s.label}>
+          <label htmlFor="email">E-mail</label>
+          <Field name="email" type="email" placeholder="Enter Your E-Mail" />
+        </div>
         <svg width={24} height={24} className={s.emailIcon}>
           <use href="../../../public/icons/email.svg" />
         </svg>
-        <label htmlFor="password">Password</label>
-        <Field
-          name="password"
-          type="password"
-          placeholder="Enter Your Password"
-        />
+        <div className={s.label}>
+          <label htmlFor="password">Password</label>
+          <Field
+            name="password"
+            type="password"
+            placeholder="Enter Your Password"
+          />
+        </div>
         <svg width={24} height={24} className={s.pswrdIcon}>
           <use href="../../../public/icons/key.svg" />
         </svg>
         <button type="submit" className={s.btn}>
           Login
         </button>
-        <a href={`${BASE_URL}/api/auth/google`} type="button" className={s.googleBtn}>
-          <svg width={24} height={24}>
-            <use href="../../../public/icons/devicon_google.svg" />
-          </svg>
-          Sign Up With Google
-        </a>
+        <div  id="googleBtn">
+          
+        </div>
       </Form>
     </Formik>
   );

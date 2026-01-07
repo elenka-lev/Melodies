@@ -7,11 +7,13 @@
   height: 372px;
   background-color: #53063e;
   position: relative;
+  align-items: center;
 }
 .formGroup {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 .emailField,
 .nameField,

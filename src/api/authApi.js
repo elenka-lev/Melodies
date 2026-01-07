@@ -46,16 +46,10 @@ export const refreshToken = async token => {
   return data;
 };
 
-export const googleAuth = async googleToken => {
-  const { data } = await axios.post(
-    `${BASE_URL}/api/auth/google`,
-    { googleToken },
-    {
-      headers: {
-        Authorization: `Bearer ${googleToken}`,
-      },
-    }
-  );
+export const googleAuth = async idToken => {
+  const { data } = await axios.post(`${BASE_URL}/api/auth/google`, {
+    idToken,
+  });
   return data;
 };
 

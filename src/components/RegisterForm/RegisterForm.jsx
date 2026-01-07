@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './RegisterForm.module.css'
 import * as Yup from 'yup'
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useMutation } from '@tanstack/react-query';
-import { registerUser } from '../../api/authApi.js';
+import { googleAuth, registerUser } from '../../api/authApi.js';
 import { BASE_URL } from '../../constants.js';
 
 const registerSchema = Yup.object().shape({
@@ -41,6 +41,46 @@ const RegisterForm = () => {
   const handleSubmit = values => {
     mutation.mutate(values);
   };
+
+  const handleGoogleResponse = async response => {
+    try {
+      const idToken = response.credential; 
+      const data = await googleAuth(idToken);
+
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        setIsLoggedIn(true);
+        closeModal();
+        
+        alert(`Welcome, ${data.user.name}!`);
+      }
+    } catch (error) {
+      console.error('Бэкенд отклонил Google Token:', error);
+      alert(
+        'Ошибка на сервере: ' + (error.response?.data?.message || error.message)
+      );
+    }
+  };
+
+  
+  useEffect(() => {
+    
+    if (window.google) {
+      google.accounts.id.initialize({
+        client_id:
+          '697861147220-12t49h5h52too9lkseau285laslnbdcn.apps.googleusercontent.com', 
+        callback: handleGoogleResponse,
+      });
+
+      google.accounts.id.renderButton(document.getElementById('googleBtn'), {
+        theme: 'outline',
+        size: 'large',
+        width: '426px',
+        text: 'signup_with', // Текст кнопки
+        shape: 'pill',
+      });
+    }
+  }, []);
 
   const initialValues = {
       name: '',
@@ -98,16 +138,9 @@ const RegisterForm = () => {
           <span className={s.line}></span>
         </div>
 
-        <a
-          type="button"
-          className={s.googleBtn}
-          href={`${BASE_URL}/api/auth/google`}
-        >
-          <svg width={24} height={24}>
-            <use href="../../../public/icons/devicon_google.svg" />
-          </svg>
-          Sign Up With Google
-        </a>
+        <div id="googleBtn" >
+          
+        </div>
       </Form>
     </Formik>
   );
