@@ -27,7 +27,7 @@ useEffect(() => {
 if (isLoadingAuth) return <div className={s.loader}>Checking access...</div>;
 
 if (!isLoggedIn) return null;
-console.log('Данные из базы:', favorites);
+
 
   return (
     <section className={s.favorite}>

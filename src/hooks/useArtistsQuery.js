@@ -12,7 +12,7 @@ export const useArtistTopTracksQuery = artistId => {
   return useQuery({
     queryKey: ['artists', artistId, 'topTracks'],
     queryFn: () => getArtistTopTracks(artistId),
-    enabled: !!artistId, //не робити запроси поки не отримали id
+    enabled: !!artistId,
   });
 };
 

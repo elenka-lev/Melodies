@@ -57,7 +57,7 @@ const RegisterForm = () => {
     } catch (error) {
       console.error('Бэкенд отклонил Google Token:', error);
       alert(
-        'Ошибка на сервере: ' + (error.response?.data?.message || error.message)
+        'Server error: ' + (error.response?.data?.message || error.message)
       );
     }
   };
@@ -76,7 +76,7 @@ const RegisterForm = () => {
         theme: 'outline',
         size: 'large',
         width: '426px',
-        text: 'signup_with', // Текст кнопки
+        text: 'signup_with', 
         shape: 'pill',
       });
     }

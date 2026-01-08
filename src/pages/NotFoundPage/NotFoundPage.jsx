@@ -16,7 +16,7 @@ const NotFoundPage = () => {
       >
         Go home
       </Button>
-      {/* <button className={s.button} onClick={() => navigate('/', { replace: true })}>Go home</button> */}
+      
     </div>
   );
 }

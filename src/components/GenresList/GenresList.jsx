@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const GenresList = ({ genres, onGenreClick }) => {
   const [visibleCount, setVisibleCount] = useState(4);
-  // const [selectedGenre, setSelectedGenre] = useState(null);
+  
   const buildLinkClass = ({ isVisible }) => {
     return clsx(s.genresItem, isVisible && s.visible);
   };

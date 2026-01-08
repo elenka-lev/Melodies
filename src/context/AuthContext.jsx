@@ -1,11 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import Modal from '../components/Modal/Modal'; 
+import Modal from '../components/Modal/Modal';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
 import LoginForm from '../components/LoginForm/LoginForm';
 import s from './AuthContext.module.css';
 import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-
 
 const AuthContext = createContext();
 
@@ -13,8 +12,8 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState('signup');
-const queryClient = useQueryClient();
-const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const openModal = mode => {
     setAuthMode(mode);
     setIsModalOpen(true);
@@ -23,31 +22,29 @@ const navigate = useNavigate();
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-  
-  const params = new URLSearchParams(window.location.search);
-  const tokenFromUrl = params.get('token');
+    const params = new URLSearchParams(window.location.search);
+    const tokenFromUrl = params.get('token');
 
-  if (tokenFromUrl) {
-    localStorage.setItem('token', tokenFromUrl);
-    setIsLoggedIn(true);
-    
-    window.history.replaceState({}, document.title, "/");
-  }
+    if (tokenFromUrl) {
+      localStorage.setItem('token', tokenFromUrl);
+      setIsLoggedIn(true);
 
-  
-  const savedToken = localStorage.getItem('token');
-  if (savedToken) {
-    setIsLoggedIn(true);
-  }
+      window.history.replaceState({}, document.title, '/');
+    }
+
+    const savedToken = localStorage.getItem('token');
+    if (savedToken) {
+      setIsLoggedIn(true);
+    }
   }, []);
-  
+
   const logout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    queryClient.clear(); 
-    navigate('/'); 
+    queryClient.clear();
+    navigate('/');
   };
-  
+
   return (
     <AuthContext.Provider
       value={{ isLoggedIn, setIsLoggedIn, openModal, closeModal, logout }}

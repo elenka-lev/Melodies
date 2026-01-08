@@ -52,24 +52,7 @@ margin-bottom: 24px;
   color: #ee10b0;
   
 }
-/* .googleBtn {
-  border: 2px solid #fff;
-  border-radius: 4px;
-  width: 426px;
-  height: 39px;
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  gap: 8px;
-  margin-top: 24px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-.googleBtn:hover {
-  background-color: #fff;
-  color: #000;
-  
-} */
+
  #googleBtn {
   margin: 0 auto;
  }

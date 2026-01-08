@@ -50,9 +50,9 @@ const LoginForm = () => {
           alert(`Welcome, ${data.user.name}!`);
         }
       } catch (error) {
-        console.error('Бэкенд отклонил Google Token:', error);
+        
         alert(
-          'Ошибка на сервере: ' + (error.response?.data?.message || error.message)
+          'Server error: ' + (error.response?.data?.message || error.message)
         );
       }
     };
